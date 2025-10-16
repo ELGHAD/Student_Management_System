@@ -37,6 +37,16 @@ public class StudentService {
         saveToFile();
         System.out.println("🗑️ Student deleted!");
     }
+    public void searchStudent(String keyword) {
+        boolean found = false;
+        for (Student s : students) {
+            if (s.getName().equalsIgnoreCase(keyword) || String.valueOf(s.getId()).equals(keyword)) {
+                System.out.println(s);
+                found = true;
+            }
+        }
+        if (!found) System.out.println("❌ No student found with that name or ID.");
+    }
 
     private void saveToFile() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {

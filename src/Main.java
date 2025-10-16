@@ -11,17 +11,20 @@ public class Main {
             System.out.println("2️⃣ View All Students");
             System.out.println("3️⃣ Update Student");
             System.out.println("4️⃣ Delete Student");
-            System.out.println("5️⃣ Exit");
+            System.out.println("5️⃣ Searching for a Student");
+            System.out.println("6\uFE0F⃣ Exit");
             System.out.print("👉 Enter choice: ");
 
             int choice = readInt(sc, "⚠️ Invalid choice. Please enter a number: ");
 
             switch (choice) {
                 case 1 -> {
+                    System.out.print(" Enter Student ID: ");
                     int id = readInt(sc, "⚠️ Invalid ID. Please enter a number: ");
                     sc.nextLine();
                     System.out.print("Enter Name: ");
                     String name = sc.nextLine();
+                    System.out.print("Enter grade: ");
                     double grade = readDouble(sc, "⚠️ Invalid grade. Please enter a number: ");
                     service.addStudent(new Student(id, name, grade));
                 }
@@ -39,9 +42,18 @@ public class Main {
                     service.deleteStudent(id);
                 }
                 case 5 -> {
+                    System.out.print("Enter ID or Name to search: ");
+                    sc.nextLine();
+                    String key = sc.nextLine();
+                    service.searchStudent(key);
+                }
+
+                case 6 -> {
                     System.out.println("👋 Exiting system...");
                     return;
                 }
+
+
                 default -> System.out.println("⚠️ Invalid choice!");
             }
         }
