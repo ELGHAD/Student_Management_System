@@ -10,9 +10,18 @@ public class StudentService {
     }
 
     public void addStudent(Student s) {
+        if (existsId(s.getId())) {
+            System.out.println("❌ A student with ID " + s.getId() + " already exists. Choose a different ID.");
+            return;
+        }
         students.add(s);
         saveToFile();
+        System.out.println("✅ Student added successfully!");
     }
+    public boolean existsId(int id) {
+        return students.stream().anyMatch(s -> s.getId() == id);
+    }
+
 
     public void viewAll() {
         if (students.isEmpty()) System.out.println("No students found!");

@@ -19,17 +19,18 @@ public class Main {
 
             switch (choice) {
                 case 1 -> {
-                    System.out.print(" Enter Student ID: ");
+                    System.out.print("Enter ID: ");
                     int id = readInt(sc, "⚠️ Invalid ID. Please enter a number: ");
-                    sc.nextLine();
+                    sc.nextLine(); // consume newline
                     System.out.print("Enter Name: ");
                     String name = sc.nextLine();
-                    System.out.print("Enter grade: ");
+                    System.out.print("Enter Grade: ");
                     double grade = readDouble(sc, "⚠️ Invalid grade. Please enter a number: ");
                     service.addStudent(new Student(id, name, grade));
                 }
                 case 2 -> service.viewAll();
                 case 3 -> {
+                    System.out.print("Enter ID of Student to update: ");
                     int id = readInt(sc, "⚠️ Invalid ID. Please enter a number: ");
                     sc.nextLine();
                     System.out.print("Enter New Name: ");
@@ -38,6 +39,7 @@ public class Main {
                     service.updateStudent(id, name, grade);
                 }
                 case 4 -> {
+                    System.out.print("enter Id of student to delete : ");
                     int id = readInt(sc, "⚠️ Invalid ID. Please enter a number: ");
                     service.deleteStudent(id);
                 }
